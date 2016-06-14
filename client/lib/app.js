@@ -1,0 +1,18 @@
+angular.module('casserole',
+  [
+    'angular-meteor',    
+    'ngAnimate',
+    'ngCookies',
+    'ui.select',
+    'ngSanitize',    
+    'toastr',
+    'ui.router',
+    'ui.grid',
+    'smartadmin',
+    'datePicker',
+    'ui.calendar',
+    'ui.bootstrap',
+    'ngFileUpload',
+    'checklist-model'
+  ]
+);

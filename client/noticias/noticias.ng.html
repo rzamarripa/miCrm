@@ -1,0 +1,89 @@
+<h2>Noticias</h2>
+<div class="row">
+	<div class="col-sm-12">
+		<a class="btn btn-{{no.nuevo == true ? 'primary' : 'danger'}}" role="button" data-toggle="collapse" 
+			href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" ng-click="no.nuevaNoticia()">
+		  {{no.nuevo == true ? 'Nuevo' : 'Cancelar'}}
+		</a>
+		<div class="collapse" id="collapseExample">
+			<form class="form-horizontal" role="form" data-parsley-validate>
+		  	<div class="well">	    
+			    <div class="row">
+				    <div class="col-sm-4">
+					    <label>Título</label>
+				    	<input type="text" class="form-control" placeholder="Título" ng-model="no.noticia.titulo" required>
+				    </div>
+				    <div class="col-sm-4">
+					    <label>Descripción</label>
+				    	<textarea class="form-control" placeholder="Descripción" ng-model="no.noticia.descripcion" required></textarea>
+				    </div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<input type="submit" ng-click="no.guardar(noticia)" value="Guardar" class="btn btn-primary" ng-show="no.action">
+						<input type="submit" ng-click="no.actualizar(noticia)" value="Actualizar" class="btn btn-primary" ng-show="!no.action">
+					</div>
+				</div>	  
+		  </form>
+		</div>
+	</div>
+</div>
+<br/>
+<!-- List -->
+<div class="row">
+	<div class="col-sm-12">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>No.</th>
+					<th>Título</th>
+					<th>Descripción</th>
+					<th width="10%">
+						<div class="text-center">
+							Estatus
+						</div>
+					</th>
+					<th width="10%">
+						<div class="text-center">
+							Acciones
+						</div>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+		    <tr ng-repeat="noticia in no.noticias">
+			    <td>{{$index + 1}}</td>
+			    <td>{{noticia.titulo}}</td>
+			    <td>{{noticia.descripcion}}</td>
+			    <td>
+				    <div class="text-center">
+				    	<span ng-if="noticia.estatus" class="label label-success">
+							  Activo
+							</span>
+							<span ng-if="!noticia.estatus" class="label label-danger">
+							  Inactivo
+							</span>
+				    </div>
+			    </td>
+			    <td>
+				    <div class="text-center">
+					    <div class="btn-group">
+							  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							    <span class="caret"></span>
+							    <span class="sr-only">Toggle Dropdown</span>
+							  </button>
+							  <ul class="dropdown-menu text-left">
+							    <li><a href="#" ng-click="no.editar(noticia._id)"><i class="fa fa-pencil"></i> Editar</a></li>
+							    <li><a href="#" ng-click="no.cambiarEstatus(noticia._id)"><i class="fa fa-trash"></i> Desactivar</a></li>
+							  </ul>
+							</div>
+				    </div>				    
+			    </td>
+		    </tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+
