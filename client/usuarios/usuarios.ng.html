@@ -1,0 +1,119 @@
+<h2>Usuarios</h2>
+<div class="row">
+	<div class="col-sm-12">
+		<a class="btn btn-{{user.nuevo == true ? 'primary' : 'danger'}}" role="button" data-toggle="collapse" 
+			href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" id="nuevousuario" ng-click="user.nuevoUsuario()">
+	 {{user.nuevo == true ? 'Nuevo' : 'Cancelar'}}
+		</a>
+		<div class="collapse" id="collapseExample">
+			<form class="form-horizontal" role="form" data-parsley-validate>
+		  	<div class="well">	    
+			    <div class="row">
+			    	<div class="col-sm-4">					    
+				    	<label>Usuario</label>
+				    	<input type="text" class="form-control" placeholder="Usuario" ng-model="user.usuario.nombreUsuario" >
+			    	</div>
+			    	<div class="col-sm-4">					    
+				    	<label>Contraseña</label>
+				    	<input type="password" class="form-control" placeholder="Contraseña" ng-model="user.usuario.contrasena" >
+			    	</div>		    				    	    
+			    	<div class="col-sm-4">					    
+				    	<label>Confirmar Contraseña</label>
+				    	<input type="password" class="form-control" placeholder="Confirmar Contraseña" ng-model="user.usuario.confirmarContrasena" >
+					</div>
+			    	<div class="col-sm-4">
+			    		<label>Nombre </label>
+				    	<input type="text" class="form-control" placeholder="Nombre" ng-model="user.usuario.nombre" >
+			    	</div>
+
+			    	<div class="col-sm-4">
+			    		<label>Apellido Paterno </label>
+				    	<input type="text" class="form-control" placeholder="Apellido Paterno" ng-model="user.usuario.apPaterno" >
+			    	</div>
+			    	<div class="col-sm-4">
+			    		<label>Apellido Materno</label>
+				    	<input type="text" class="form-control" placeholder="Apellido Materno" ng-model="user.usuario.apMaterno" >
+			    	</div>
+			    	<div class="col-sm-4">
+			    		<label>Teléfono</label>
+				    	<input type="text" class="form-control" placeholder="Teléfono" ng-model="user.usuario.telefono" >
+			    	</div>
+			    	<div class="col-sm-4">
+			    		<label>Correo</label>
+				    	<input type="text" class="form-control" placeholder="Correo" ng-model="user.usuario.correo" >
+			    	</div>
+					    	<div class="col-sm-4">
+							<label for="talla">Fotografía</label>
+							<button class="btn btn-primary" ng-click="user.tomarFoto(user.usuario)"><i class="fa fa-camera"></i></button>
+							<img width="100px" ng-src="{{user.usuario.fotografia}}" ng-class="{'img-thumbnail': !!usuario.fotografia}" />
+						</div>
+					</div>				
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<input type="submit" ng-click="user.guardar(user.usuario)" value="Guardar" class="btn btn-primary" ng-show="user.action">
+						<input type="submit" ng-click="user.actualizar(user.usuario)" value="Actualizar" class="btn btn-primary" ng-show="!user.action">	
+					</div>
+				</div>	  
+		  </form>
+		</div>
+	</div>
+</div>
+
+<!-- List -->
+<div class="row">
+	<div class="col-sm-12">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th width="10%"><div class="text-center">Foto</div></th>
+					<th width="10%"><div class="text-center">Nombre</div></th>
+					<th width="10%"><div class="text-center">Teléfono</div></th>
+					<th width="10%"><div class="text-center">correo</div></th>
+					<th width="5%">
+						<div class="text-center">
+							Estatus
+						</div>
+					</th>
+					<th width="7%">
+						<div class="text-center">
+							Acciones
+						</div>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+		    <tr ng-repeat="usuario in user.usuarios">
+		       <td><img width="100px" ng-src="{{usuario.fotografia}}" ng-class="{'img-thumbnail': !!usuario.fotografia}"/> </td>
+			    <td>{{usuario.nombre}} {{usuario.apPaterno}} {{usuario.apMaterno}}</td>
+			    <td>{{usuario.telefono}} </td>
+			    <td>{{usuario.correo}} </td>
+			    <td>
+				    <div class="text-center">
+				    	<span ng-if="usuario.estatus" class="label label-success">
+							  Activo
+							</span>
+							<span ng-if="!usuario.estatus" class="label label-danger">
+							  Inactivo
+							</span>
+				    </div>
+			    </td>
+			    <td>
+				    <div class="text-center">
+					    <div class="btn-group">
+							  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							    <span class="caret"></span>
+							    <span class="sr-only">Toggle Dropdown</span>
+							  </button>
+							  <ul class="dropdown-menu text-left">
+							    <li><a href="#" ng-click="user.editar(usuario._id)"><i class="fa fa-pencil"></i> Editar</a></li>
+							  <li><a href="#" ng-click="user.cambiarEstatus(usuario._id)"><i class="fa fa-trash"></i> Desactivar</a></li>
+							  </ul>
+							</div>
+				    </div>	
+			    </td>
+		    </tr>
+			</tbody>
+		</table>
+	</div>
+</div>

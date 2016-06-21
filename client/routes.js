@@ -100,7 +100,7 @@ angular.module('casserole').config(['$injector', function ($injector) {
       resolve: {
 				"currentUser": ["$meteor", "toastr", function($meteor, toastr){
 					return $meteor.requireValidUser(function(user) {
-						if(user.roles[0] == "Admin"){
+						if(user.roles[0] == "Admin" || user.roles[0] == "administrador"){
 							return true;
 						}else{
 							return 'UNAUTHORIZED'; 
@@ -121,7 +121,7 @@ angular.module('casserole').config(['$injector', function ($injector) {
       resolve: {
 				"currentUser": ["$meteor", "toastr", function($meteor, toastr){
 					return $meteor.requireValidUser(function(user) {
-						if(user.roles[0] == "Admin"){
+						if(user.roles[0] == "Admin"  || user.roles[0] == "administrador"){
 							return true;
 						}else{
 							return 'UNAUTHORIZED'; 
@@ -137,7 +137,7 @@ angular.module('casserole').config(['$injector', function ($injector) {
       resolve: {
 				"currentUser": ["$meteor", "toastr", function($meteor, toastr){
 					return $meteor.requireValidUser(function(user) {
-						if(user.roles[0] == "Admin"){
+						if(user.roles[0] == "Admin" || user.roles[0] == "administrador" ){
 							return true;
 						}else{
 							return 'UNAUTHORIZED'; 
@@ -153,7 +153,7 @@ angular.module('casserole').config(['$injector', function ($injector) {
       resolve: {
 				"currentUser": ["$meteor", "toastr", function($meteor, toastr){
 					return $meteor.requireValidUser(function(user) {
-						if(user.roles[0] == "Admin"){
+						if(user.roles[0] == "Admin" || user.roles[0] == "administrador"){
 							return true;
 						}else{
 							return 'UNAUTHORIZED'; 
@@ -169,7 +169,7 @@ angular.module('casserole').config(['$injector', function ($injector) {
       resolve: {
 				"currentUser": ["$meteor", "toastr", function($meteor, toastr){
 					return $meteor.requireValidUser(function(user) {
-						if(user.roles[0] == "Staff"){
+						if(user.roles[0] == "Staff" || user.roles[0] == "administrador"){
 							return true;
 						}else{
 							return 'UNAUTHORIZED'; 
@@ -185,7 +185,23 @@ angular.module('casserole').config(['$injector', function ($injector) {
       resolve: {
 				"currentUser": ["$meteor", "toastr", function($meteor, toastr){
 					return $meteor.requireValidUser(function(user) {
-						if(user.roles[0] == "Admin"){
+						if(user.roles[0] == "Admin" || user.roles[0] == "administrador"){
+							return true;
+						}else{
+							return 'UNAUTHORIZED'; 
+						}					 	
+         });
+       }]
+    	}
+    }) 
+    .state('root.usuarios', {
+      url: '/usuarios',
+      templateUrl: 'client/usuarios/usuarios.ng.html',
+      controller: 'UsuariosCtrl as user',
+      resolve: {
+				"currentUser": ["$meteor", "toastr", function($meteor, toastr){
+					return $meteor.requireValidUser(function(user) {
+						if(user.roles[0] == "Admin" || user.roles[0] == "administrador"){
 							return true;
 						}else{
 							return 'UNAUTHORIZED'; 
