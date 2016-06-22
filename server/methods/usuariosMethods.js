@@ -23,16 +23,20 @@ Meteor.methods({
 	  }
 	},
 	updateUsuario: function (usuario, id, rol) {
-		console.log(id);
-	  console.log(usuario.password);
-	  Meteor.users.update({_id: id}, {$set:{
+		
+	  var user = Meteor.users.findOne({"profile.empleado_id" : id});
+	  console.log(user);
+	  console.log(usuario.nombreUsuario);
+	  Meteor.users.update({_id: user._id}, {$set:{
 			username: usuario.nombreUsuario,
+			roles: [rol],
 			profile: {
 				email: usuario.correo,
 				nombre: usuario.nombre,
 				apellidos: usuario.apPaterno + " " + usuario.apMaterno,
 				nombreCompleto : usuario.nombre  + " " + usuario.apPaterno + " " + usuario.apMaterno,
-				fotografia : usuario.fotografia
+				fotografia : usuario.fotografia,
+				empleado_id : id
 			}
 		}});
 		

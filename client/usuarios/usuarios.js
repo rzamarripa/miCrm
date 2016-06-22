@@ -32,7 +32,7 @@ this.guardar = function(usuario)
 	{		
 		rc.usuario.estatus = true;
 		var empleado_id = Usuarios.insert(rc.usuario);
-		Meteor.call("createUsuario", rc.usuario, empleado_id, 'administrador');
+		Meteor.call("createUsuario", rc.usuario, empleado_id, 'Admin');
 		toastr.success('Admin guardado.');
 		usuario = {};
 		$('.collapse').collapse('hide');
@@ -50,17 +50,17 @@ this.guardar = function(usuario)
 	};
 	
 	
-		this.actualizar = function(usuario)
+	this.actualizar = function(empleado)
 	{
-		var idTemp = usuario._id;
-		delete usuario._id;
-		console.log(usuario);		
-
-
-		Usuarios.update({_id:idTemp},{$set:usuario});
+		console.log(empleado);
+		var idTemp = empleado._id;
+		delete empleado._id;		
+		Usuarios.update({_id:idTemp},{$set:empleado});
+		Meteor.call("updateUsuario", empleado, idTemp, 'Admin');
 		$('.collapse').collapse('hide');
 		this.nuevo = true;
 	};
+
 
 	this.cambiarEstatus = function(id)
 	{

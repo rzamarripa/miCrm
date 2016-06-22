@@ -47,7 +47,7 @@ function EmpleadosCtrl($scope, $meteor, $reactive,  $state, $stateParams, toastr
 		var idTemp = empleado._id;
 		delete empleado._id;		
 		Empleados.update({_id:idTemp},{$set:empleado});
-		Meteor.call("updateUsuario", empleado, Meteor.userId(), 'Staff');
+		Meteor.call("updateUsuario", empleado, idTemp, 'Staff');
 		$('.collapse').collapse('hide');
 		this.nuevo = true;
 	};
