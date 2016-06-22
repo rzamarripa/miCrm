@@ -50,6 +50,7 @@ function EmpleadosCtrl($scope, $meteor, $reactive,  $state, $stateParams, toastr
 		Meteor.call("updateUsuario", empleado, idTemp, 'Staff');
 		$('.collapse').collapse('hide');
 		this.nuevo = true;
+		this.empleado = {};
 	};
 		
 	this.cambiarEstatus = function(id)
@@ -63,7 +64,7 @@ function EmpleadosCtrl($scope, $meteor, $reactive,  $state, $stateParams, toastr
 		Empleados.update({_id:id}, {$set : {estatus : empleado.estatus}});
 	};
 
-	 this.tomarFoto = function(empleado){
+	this.tomarFoto = function(empleado){
 		$meteor.getPicture().then(function(data){
 			empleado.fotografia = data;
 		});

@@ -81,19 +81,24 @@ angular.module("casserole")
   
   this.etapaVenta = function(etapaVenta){
 	  var etapa = EtapasVenta.findOne(etapaVenta);
-	  if(etapa.nombre != undefined){
-		  return etapa.nombre;
-	  }else{
-		  return "cargando...";
+	  if(etapa){
+		  if(etapa.nombre != undefined){
+			  return etapa.nombre;
+		  }else{
+			  return "cargando...";
+		  }
 	  }
 	  
+	  
   }	
-  this.vendedor = function(vendedor){
-	  var empleado = Empleados.findOne(vendedor);
-	  if(empleado.nombre != undefined){
-		  return empleado.nombre + " " + empleado.apPaterno;
+  this.vendedor = function(prospecto){
+	  var empleado = Empleados.findOne(prospecto);
+	  if(empleado != undefined){
+		  var nombre = empleado.nombre != undefined ? empleado.nombre + " " : "";
+		  var apPaterno = empleado.apPaterno != undefined ? empleado.apPaterno : "";
+		  return nombre + apPaterno;
 	  }else{
-		  return "cargando...";
+		  return "Sin asignar";
 	  }
 	  
   }		
