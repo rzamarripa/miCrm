@@ -47,9 +47,10 @@ function EmpleadosCtrl($scope, $meteor, $reactive,  $state, $stateParams, toastr
 		var idTemp = empleado._id;
 		delete empleado._id;		
 		Empleados.update({_id:idTemp},{$set:empleado});
-		Meteor.call("updateUsuario", empleado, Meteor.userId(), 'Staff');
+		Meteor.call("updateUsuario", empleado, idTemp, 'Staff');
 		$('.collapse').collapse('hide');
 		this.nuevo = true;
+		this.empleado = {};
 	};
 		
 	this.cambiarEstatus = function(id)
@@ -63,7 +64,7 @@ function EmpleadosCtrl($scope, $meteor, $reactive,  $state, $stateParams, toastr
 		Empleados.update({_id:id}, {$set : {estatus : empleado.estatus}});
 	};
 
-	 this.tomarFoto = function(empleado){
+	this.tomarFoto = function(empleado){
 		$meteor.getPicture().then(function(data){
 			empleado.fotografia = data;
 		});
