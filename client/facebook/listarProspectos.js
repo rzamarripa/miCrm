@@ -58,7 +58,7 @@ angular.module("casserole")
 	{
 		console.log('mlp')
 		Meteor.call('sendEmail',
-            'juancarlos_r11@hotmail.com',
+            'esp_casserole@hotmail.com',
             'carlos.masoft@gmail.com',
             'Prospecto Casserole CRM',
             '<h1>Prospecto Casserole CRM</h1><br/>'+
