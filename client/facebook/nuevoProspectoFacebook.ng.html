@@ -14,15 +14,13 @@
 									<option value="Repostería">Dedicarme a la repostería</option>
 								</select> <i></i> </label>
 						</section>
-	
-						<section class="col col-12">										
+						<section class="col col-12" style="text-align: left">
 							<h4>¿Qué te gustaría aprender?</h4>
 						  <label ng-repeat="tipoComida in fa.tipoComidas">
 						  <br/>
-							  <input type="checkbox" checklist-model="fa.prospecto.tipoComidasSeleccionadas" checklist-value="tipoComida"> {{tipoComida}}
+							  <input type="checkbox" name="aprender" checklist-model="fa.prospecto.tipoComidasSeleccionadas" checklist-value="tipoComida"> {{tipoComida}}
 							</label>
 						</section>
-	
 						<section class="col col-12">
 							<h4>Quieres estudiar...</h4>
 							<div class="inline-group">
@@ -38,8 +36,7 @@
 							</div>
 						</section>
 					</div>
-					
-					<section>
+					<section style="text-align: left">
 						<h4>Información adicional</h4>
 						<label class="textarea"> 										
 							<textarea rows="3" name="info" ng-model="fa.prospecto.informacion" placeholder="Información Adicional"></textarea> 
@@ -56,11 +53,10 @@
 						</section>
 						<section class="col col-6">
 							<label class="input"> <i class="icon-prepend fa fa-calendar"></i>
-								<input date-time class="form-control" view="year" max-view="year" min-view="date" ng-model="fa.prospecto.fechaNac" placeholder="Fecha Nacimiento"/>
+								<input date-time class="form-control" view="year" max-view="year" min-view="date" name="ffecha" ng-model="fa.prospecto.fechaNac" placeholder="Fecha Nacimiento"/>
 							</label>
 						</section>
 					</div>
-	
 					<div class="row">
 						<section class="col col-6">
 							<label class="input"> <i class="icon-prepend fa fa-envelope-o"></i>
@@ -74,17 +70,29 @@
 						</section>
 					</div>
 				</fieldset>
-	
 				<footer>
 					<button type="submit" class="btn btn-primary" ng-click="fa.guardar(fa.prospecto)">
 						Enviar
 					</button>
 				</footer>
 			</form>
-			
 		</div>
 	</div>
 </div>
-<script type="text/javascript">
-	$("#prospectoFacebook").validate();
+<!--
+<script>
+	enviar = function(estudiar){
+		document.getElementById('prospectoFacebook').reset();
+		document.getElementById("ofertas").innerHTML = deporte.toUpperCase();
+		if(estudiar == 'carrera'){
+			document.getElementById('carrera').checked = true;
+			document.getElementById('carrera').checked = false;
+			document.getElementById('carrera').checked = false;
+			document.getElementById(estudiar).style.display="none";
+			document.getElementById('diplomado').value() = 0;
+		}else if(estudiar == 'diplomado'){
+			document.getElementById('soccer').style.display="block";
+		}
+	}
 </script>
+-->

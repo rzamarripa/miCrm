@@ -37,16 +37,15 @@ angular.module("casserole")
 		this.prospecto.fecha = new Date();
 		this.prospecto.etapaVenta_id = this.etapaVenta._id;
 		ProspectosFacebook.insert(this.prospecto);
-		toastr.success('prospecto guardado.');
+		toastr.success('prospecto guardadoasdas.');
 		this.prospecto = {}; 
 		$('.collapse').collapse('hide');
-		$state.go('anon.graciasFacebook');
 	};
 	
 	this.asignar = function(prospecto, empleado_id) {
     ProspectosFacebook.update({ _id: prospecto._id }, { $set : { empleado_id : empleado_id, estatus : 2 } } );
 	}
-	
+
 	this.editar = function(id)
 	{
     this.prospecto = ProspectosFacebook.findOne({_id:id});

@@ -1,4 +1,5 @@
 Meteor.startup(function() {   
+	process.env.MAIL_URL = 'smtp://masoft:masoft2013@smtp.sendgrid.net:587';
   return Meteor.methods({
 		removeAllCursos: function() {
 			return Cursos.remove({});

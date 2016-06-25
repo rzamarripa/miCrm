@@ -53,9 +53,32 @@ angular.module("casserole")
 		  return EtapasVenta.findOne();
 	  }
   });
-  
+//   esp_casserole@hotmail.com
   this.guardar = function(prospecto)
 	{
+		console.log('mlp')
+		Meteor.call('sendEmail',
+            'juancarlos_r11@hotmail.com',
+            'carlos.masoft@gmail.com',
+            'Prospecto Casserole CRM',
+            '<h1>Prospecto Casserole CRM</h1><br/>'+
+            '<p>¿Cual es tu objetivo en Casserole?</p>'+
+            '<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+this.prospecto.quieroSer+'</h3>'+
+            '<p>¿Que te gustaria aprender?</p>'+
+            '<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+this.prospecto.tipoComidasSeleccionadas+'</h3>'+
+            '<p>Quieres estudiar ...</p>'+
+            '<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+this.prospecto.estudioInteres+'</h3>'+
+            '<p>Informacion Adicional</p>'+
+            '<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+this.prospecto.informacion+'</h3>'+
+            '<p>Nombre del contacto</p>'+
+            '<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+this.prospecto.nombre+'</h3>'+
+            '<p>Fecha de Nacimiento</p>'+
+            '<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+this.prospecto.fechaNac+'</h3>'+
+            '<p>Correo</p>'+
+            '<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+this.prospecto.correo+'</h3>'+
+            '<p>Teléfono</p>'+
+            '<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+this.prospecto.telefono+'</h3>'
+            );
 		this.prospecto.estatus = 1;
 		this.prospecto.fecha = new Date();
 		this.prospecto.etapaVenta_id = this.etapaVenta._id;
